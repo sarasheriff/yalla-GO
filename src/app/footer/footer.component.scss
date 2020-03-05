@@ -1,0 +1,52 @@
+@import "./../../styles.scss";
+footer {
+    background-color: #000000;
+    background-size: cover;
+    .wrapper {
+        width: 90%;
+        margin: 0 auto;
+        padding: $sectionMargin;
+        border-bottom: 2px solid #fff;
+        figure {
+            font-size: 0;
+        }
+        h5 {
+            color: $hcolors;
+            font-weight: bold;
+        }
+        p {
+            color: #fff;
+            font-size: $paragrphSize;
+            list-style: none;
+        }
+        a {
+            color: #fff;
+            text-decoration: none;
+            margin: 15px;
+            cursor: pointer;
+        }
+    }
+    .copyRight {
+        width: 50%;
+        p {
+            font-size: $inputSize;
+            color: #fff;
+            span {
+                color: $hcolors;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:992px) {
+    footer {
+        text-align: center;
+        .followUs {
+            justify-content: center;
+        }
+    }
+}
+
+i {
+    font-size: $paragrphSize;
+}

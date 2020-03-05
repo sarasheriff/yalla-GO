@@ -1,0 +1,76 @@
+<div class="container-fluid m-0 bg-white">
+    <div class="row  ">
+        <form [formGroup]='planForm' (ngSubmit)="onOk(planForm)" class="form-group wrapper m-auto">
+
+            <h2 class="py-3">Tell us more about yourself</h2>
+
+            <div class="col-6">
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-md-3">Your Mode:</label>
+                    <div class="col-sm-10 col-md-9">
+                        <select formControlName="location" id="inputState" class="form-control  col-md-7 col-sm-12">
+                        <option value="" disabled>select Mode</option>
+                        <option>Fun</option>
+                      </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-md-3">Location:</label>
+                    <div class="col-12 col-md-9">
+                        <select formControlName="location" id="inputState" class="form-control col-md-7 col-sm-12">
+                        <option value="" disabled>select location</option>
+                        <option *ngFor='let plan of locations' [value]="plan" >{{plan}}</option>
+                      </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label for="time" class="col-sm-2  col-md-3 ">Prefered Time:</label>
+                    <div class="col-sm-10 col-md-9 d-flex align-items-center">
+                        <input type="time" class="form-control time col-sm-5 col-md-3 mr-12 " formControlName="time" id="time">
+                        <p class="mb-0 mr-2">To</p>
+                        <input type="time" class="form-control time col-sm-5 col-md-3" formControlName="endTime" id="time"> </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <label for="">Have Children:</label>
+                    </div>
+                    <div class="col-sm-8 col-md-9">
+                        <div class="form-check form-check-inline">
+                            <input formControlName="haveChild" type="radio" name="haveChild" value="true" checked>
+                            <label class="form-check-label" for="inlineRadio1">Yes</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input formControlName="haveChild" type="radio" name="haveChild" value="false">
+                            <label class="form-check-label" for="inlineRadio2">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" [disabled]="!planForm.valid" class="btn btn-warning col-md-3 col-sm-12 show">Get Your Plan</button>
+            </div>
+        </form>
+    </div>
+
+
+
+    <div class="makeYourPlan m-0">
+        <div class="wrapper m-auto">
+            <h2>Make Your Day</h2>
+
+            <div class="row py-3" *ngFor='let plan of filteredPlans'>
+                <h2 class="mr-4"> plan {{plan.prop+1}}</h2>
+                <div class="plan d-block d-md-flex  text-center align-items-center p-5 ">
+                    <div *ngFor='let p of plan' class="planContainer  text-center ">
+                        <img class="w-100  m-auto p-2 " src="{{p.imgs[1]}}" alt="">
+                        <p class="plans">{{p.name}}</p>
+                        <p>{{p.openHours}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
